@@ -101,7 +101,7 @@ local function pick_numbers(row)
 	end
 end
 
-local last_draw = 12078
+local last_draw = 0
 local function process_html(html)
 	--<font class="cfont2"><strong>03001</strong></font>
 	local draw = string.match(html, "<font class=\"cfont2\"><strong>(%d+)</strong></font>")
@@ -121,7 +121,8 @@ local function process_html(html)
 	local msg_string = draw .. ": " .. redball1 .. " " .. redball2 .. " " .. redball3 .. " " .. redball4 .. " " .. redball5 .. " " .. redball6 .. " + " .. blueball
 	display(msg_string)
 	frame:SetStatusText(msg_string)
-	if(tonumber(draw) > tonumber(last_draw)) then
+
+	if(tonumber(draw) > tonumber(last_draw) and last_draw > 0) then
 		local rows = {tonumber(redball1), tonumber(redball2), tonumber(redball3), tonumber(redball4), tonumber(redball5), tonumber(redball6), tonumber(blueball)}
 		local times = {"2y","3y","5y","8y","all"}
 		local blueballs = {}
