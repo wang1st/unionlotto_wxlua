@@ -1,0 +1,4 @@
+myserver2.wx.lua: a lua script uses wxlua fetch newest draw information from 500wan.com and post it to my sae server
+*.net: fann pre-saved file to be reloaded by fann library
+luafann.dll: fann lua extentision
+fannfloat.dll: used by luafann.dll
