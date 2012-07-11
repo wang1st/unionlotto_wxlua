@@ -3,7 +3,7 @@ require("wx")
 require ("luacurl")
 require("luafann")
 
-local TIME_TICK_COUNT		= 1 * 1000 * 60
+local TIME_TICK_COUNT		= 5 * 1000 * 60
 local TICK_TIMER_START		= 100
 local TICK_TIMER_PAUSE		= 101
 
@@ -121,7 +121,6 @@ local function process_html(html)
 	local msg_string = draw .. ": " .. redball1 .. " " .. redball2 .. " " .. redball3 .. " " .. redball4 .. " " .. redball5 .. " " .. redball6 .. " + " .. blueball
 	display(msg_string)
 	frame:SetStatusText(msg_string)
-
 	if(tonumber(draw) > tonumber(last_draw) and last_draw > 0) then
 		local rows = {tonumber(redball1), tonumber(redball2), tonumber(redball3), tonumber(redball4), tonumber(redball5), tonumber(redball6), tonumber(blueball)}
 		local times = {"2y","3y","5y","8y","all"}
@@ -190,7 +189,7 @@ function TimerTick()
 	local w = tod["wday"]
 	local draw_is_open = false
 	if( w == 1 or w == 3 or w == 5) then --sunday equals 1
-		if(h == 21 and m > 30 ) then
+		if(h == 21 and m > 25 ) then
 			draw_is_open = true
 		end
 	end
@@ -248,5 +247,6 @@ function display(m)
 end
 
 frame:Show(true)
+
 
 wx.wxGetApp():MainLoop()
